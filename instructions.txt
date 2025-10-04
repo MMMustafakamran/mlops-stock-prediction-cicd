@@ -1,0 +1,84 @@
+Assignment 1: CI/CD with Jenkins &
+
+Stock Prediction
+
+Introduction
+In this assignment, you will learn how to implement a complete CI/CD workflow using Jenkins
+with GitHub. The goals are:
+● Understand how GitHub Webhooks trigger Jenkins pipelines.
+● Manage multiple branches for different components: backend, frontend, and database.
+● Automate building, testing, Dockerizing, and deploying your application.
+● Implement a rule-based stock prediction system instead of using Machine Learning.
+● Focus on automation and CI/CD practices, not complex ML models.
+
+Scenario
+You are building a Stock Prediction Application. The repository will have three main
+branches:
+● frontend branch → Web page to input a stock ticker and display the predicted price.
+● backend branch → Flask API implementing a simple rule-based prediction (e.g.,
+moving average of last 3 days).
+● database branch → MySQL to store historical stock prices.
+
+Your Jenkins pipeline should:
+● Trigger only when a Pull Request is merged into main (via GitHub Webhook).
+● Pull the latest code from the main branch.
+
+● Run simple tests (like checking API responses).
+● Build Docker images for each component.
+● Push the Docker images to DockerHub.
+● Deploy the Docker containers so the stock prediction app is running.
+
+Jenkins Workflow
+Step 1: Set up a Jenkins pipeline job linked to your GitHub repository.
+Step 2: Configure a GitHub webhook to trigger Jenkins only when a PR is merged into main.
+Step 3: Write a Jenkinsfile with the following stages:
+1. Checkout code → Pull latest code from main.
+2. Install dependencies → Backend and frontend dependencies.
+3. Run tests → Backend API tests, frontend build verification.
+4. Build Docker images → For backend, frontend, and database.
+5. Push Docker images → Tag images and push to DockerHub.
+6. Deploy containers → Start containers so the app runs.
+
+Exercises
+Exercise 1: Branching Setup
+● Create three branches: frontend, backend, and database.
+● Implement functionality for each branch.
+● Push branches to GitHub.
+
+Exercise 2: Webhook & Jenkins Integration
+● Configure a GitHub webhook to trigger Jenkins only on merge to main.
+● Open a PR from a feature branch → merge into main.
+● Verify that Jenkins pipeline starts automatically and executes all stages.
+
+Exercise 3: Docker Automation
+● Modify the Jenkins pipeline to build and tag Docker images for each branch.
+● Push Docker images to DockerHub.
+
+Exercise 4: Stock Prediction Logic (Rule-Based, No ML)
+● Implement a moving average prediction in the backend branch (e.g., tomorrow’s price
+= average of last 3 days).
+● Test the API using dummy stock data.
+● Ensure Jenkins rebuilds the Docker image after PR merge.
+
+Key Takeaways
+● Jenkins can be fully automated with GitHub Webhooks to implement CI/CD.
+● Feature branches isolate work; PRs ensure safe merging.
+● Docker provides consistent environments for running backend, frontend, and
+database.
+● CI/CD pipelines automate testing, building, pushing, and deployment, reducing human
+error.
+● Proper workflow: feature branch → PR → merge into main → Jenkins triggers full CI/CD.
+
+Submission Guidelines
+By the end of the assignment, your main branch must contain all finalized code before the
+deadline.
+Important: You must not push code directly to main. I will be checking your commit history to
+ensure that all code has been merged into main through Pull Requests (PRs) only.
+Follow these steps:
+1. Create separate branches for each component (frontend, backend, database).
+2. Implement your work in those branches.
+3. Open Pull Requests (PRs) and merge them into the main branch.
+
+Once your repository is ready:
+● Zip the entire assignment folder.
+● Submit the zipped repository on GCR as well.
