@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Prediction Dashboard</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1>Rule-Based Stock Prediction</h1>
+        <p>Three-day moving average with trend adjustment</p>
+      </header>
+
+      <main class="app-container">
+        <section class="card input-card">
+          <h2>Check Prediction</h2>
+          <form id="prediction-form">
+            <div class="form-group">
+              <label for="ticker">Select Ticker</label>
+              <select id="ticker" required>
+                <option value="">Loading tickers...</option>
+              </select>
+            </div>
+            <button type="submit" id="predict-button">Predict Price</button>
+          </form>
+          <div id="status-message" class="status-message" hidden></div>
+        </section>
+
+        <section class="card result-card" id="result-section" hidden>
+          <h2>Prediction Result</h2>
+          <div class="result-grid">
+            <div>
+              <span class="label">Ticker</span>
+              <span id="result-ticker">-</span>
+            </div>
+            <div>
+              <span class="label">Predicted Price</span>
+              <span id="result-price">-</span>
+            </div>
+            <div>
+              <span class="label">Moving Average</span>
+              <span id="result-moving-average">-</span>
+            </div>
+            <div>
+              <span class="label">Confidence</span>
+              <span id="result-confidence">-</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card chart-card" id="chart-section" hidden>
+          <div class="chart-header">
+            <h2>Historical Prices</h2>
+            <div class="chart-controls">
+              <label for="history-range">Days</label>
+              <select id="history-range">
+                <option value="3">3</option>
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </div>
+          <canvas id="history-chart"></canvas>
+        </section>
+
+        <section class="card info-card">
+          <h2>How It Works</h2>
+          <ul>
+            <li>Uses last 3 days of prices for moving average</li>
+            <li>Applies 10% trend adjustment for momentum</li>
+            <li>Displays recent historical price data</li>
+            <li>Pulled from backend Flask API</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>CI/CD Assignment · Jenkins · Docker · Rule-Based Prediction</p>
+      </footer>
+    </div>
+
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>
+
